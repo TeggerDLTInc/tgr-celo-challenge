@@ -23,13 +23,9 @@ const amount = 10
 async function init() {
 
 /// CODE FOR TRANSACTION TO RUN
-  const txo = await contract.methods.transfer(contractAdress, amount);
-  let data = txo.encodeABI()
-
-  const tx = await kit.sendTransactionObject(txo, {
-  to: contract.address,
+const txo = await contract.methods.transfer(contractAdress,amount);
+const tx = await kit.sendTransactionObject(txo, {
   from: kit.defaultAccount,
-  data: data
 });
 await tx.getHash();
 await tx.waitReceipt();
